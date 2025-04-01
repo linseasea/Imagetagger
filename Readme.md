@@ -45,7 +45,7 @@ ImageTagger/
 
 1. 克隆项目
 ```bash
-git clone https://github.com/yourusername/ImageTagger.git
+git clone https://github.com/linseasea/Imagetagger.git
 ```
 
 2. 创建并激活虚拟环境
@@ -77,7 +77,7 @@ python manage.py runserver
 
 1. 克隆项目
 ```bash
-git clone https://github.com/yourusername/ImageTagger.git
+git clone https://github.com/linseasea/Imagetagger.git
 ```
 
 2. 创建数据目录
@@ -211,7 +211,7 @@ docker-compose up
 本项目采用MIT许可证开源。
 
 ## 联系方式
-- 项目地址：https://github.com/yourusername/ImageTagger
+- 项目地址：https://github.com/linseasea/Imagetagger.git
 - 问题反馈：可通过GitHub Issues提交
 
 
