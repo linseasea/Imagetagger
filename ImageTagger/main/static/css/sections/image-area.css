@@ -1,0 +1,120 @@
+/* 图片加载区域样式 */
+.loading-area {
+    width: 360px; /* 固定宽度360px */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.images-container {
+    padding: 0 0.8rem;
+    margin-top: var(--content-top-spacing);
+}
+
+.no-images {
+    margin-top: 3rem;
+    color: var(--light-text);
+    text-align: center;
+    opacity: 0.7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 图片项 */
+.image-item {
+    margin-bottom: var(--item-spacing);
+    width: 300px; /* 图片宽度300px */
+    height: 300px; /* 图片高度300px */
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    margin-left: auto;
+    margin-right: auto; /* 图片在容器中居中 */
+    background-color: var(--dark-bg);
+}
+
+.image-item:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--glow-effect);
+    border-color: var(--primary-light);
+}
+
+.image-item.active {
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(255, 107, 151, 0.5);
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.image-item:hover img {
+    transform: scale(1.05);
+}
+
+/* 图片序号 */
+.image-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    z-index: 2;
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 图片选择框 */
+.image-checkbox {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.image-checkbox input {
+    display: none;
+}
+
+.image-checkbox label {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(26, 26, 36, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    cursor: pointer;
+    backdrop-filter: blur(3px);
+}
+
+.image-checkbox input:checked + label {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    position: relative;
+}
+
+.image-checkbox input:checked + label:after {
+    content: "✓";
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+} 

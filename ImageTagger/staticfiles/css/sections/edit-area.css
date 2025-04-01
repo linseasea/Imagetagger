@@ -1,0 +1,33 @@
+/* 文本编辑区域样式 */
+.text-edit {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(40% - 0.6rem); /* 限制最大高度，确保不占用其他区域空间 */
+    flex: none; /* 不使用flex自动伸缩 */
+}
+
+.edit-container {
+    padding: 0.8rem;
+    height: calc(100% - 80px); /* 减去标题和按钮区域的高度 */
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-area {
+    flex: 1;
+    resize: none;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: rgba(26, 26, 36, 0.8);
+    color: var(--text-color);
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.edit-area:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(130, 80, 200, 0.2);
+} 

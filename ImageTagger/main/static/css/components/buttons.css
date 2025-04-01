@@ -1,0 +1,58 @@
+/* 按钮样式 */
+
+/* 设置按钮 */
+.settings-btn {
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background: var(--gradient-primary);
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.settings-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-effect);
+}
+
+/* 按钮区域 */
+.button-area {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(42, 42, 56, 0.5);
+}
+
+.button-area button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.button-area button:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-light);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* 按钮图标颜色 */
+.ai-button i, .edit-button i, .save-button i, .clear-button i, .log-button i {
+    color: var(--accent-color);
+} 

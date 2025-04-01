@@ -1,0 +1,91 @@
+/* 主要内容布局 */
+.main-container {
+    display: flex;
+    flex: 1;
+    padding: 1.2rem;
+    gap: 1.2rem;
+    height: calc(100% - 70px);
+    position: relative;
+}
+
+/* 区域通用样式 */
+section {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-image: var(--gradient-dark);
+}
+
+section h2 {
+    text-align: center;
+    padding: 0.8rem;
+    background-color: rgba(31, 31, 41, 0.8);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    letter-spacing: 1px;
+}
+
+section h2 i {
+    color: var(--accent-color);
+}
+
+/* 滚动区域容器 */
+.content-wrapper {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.scroll-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.scrollable-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.1s ease;
+}
+
+/* 右侧区域布局 */
+.right-section {
+    width: 25%; /* 固定右侧区域宽度为25% */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    height: 100%;
+    min-width: 300px; /* 确保最小宽度 */
+}
+
+/* 确保文本编辑区域和日志展示区域各占40%高度，为AI进度条留出10%空间 */
+.text-edit {
+    height: calc(40% - 0.6rem); /* 减去间隙的一半 */
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.log-display {
+    height: calc(40% - 0.6rem); /* 减去间隙的一半 */
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+} 

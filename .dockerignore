@@ -1,0 +1,17 @@
+.git
+.gitignore
+.DS_Store
+Django_env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv
+*.log
+*.pot
+media/
+.idea/
+.vscode/
+*.swp
+*.swo 

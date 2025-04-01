@@ -1,0 +1,99 @@
+/* 日志展示区域样式 */
+.log-display {
+    display: flex;
+    flex-direction: column;
+    flex: none; /* 使用固定高度而不是flex布局 */
+    height: calc(50% - 0.6rem); /* 占右侧区域的50%高度减去间隙 */
+}
+
+.log-container {
+    padding: 0.8rem;
+    height: calc(100% - 100px); /* 高度减去标题和按钮区域，增加高度确保内容不被截断 */
+    overflow-y: auto; /* 使用自动滚动条 */
+    background-color: rgba(26, 26, 36, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin: 0.8rem;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column; /* 正常顺序显示日志 */
+    gap: 8px;
+}
+
+.log-entry {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: rgba(31, 31, 41, 0.5);
+    display: flex;
+    align-items: center;
+    border-left: 3px solid var(--border-color);
+    transition: background-color 0.2s, opacity 0.3s, transform 0.3s;
+    /* 默认显示所有日志条目 */
+    opacity: 1;
+    transform: none;
+}
+
+/* 当日志使用动画显示时的样式 */
+.log-entry.animate {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.log-entry.animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.log-entry:hover {
+    background-color: rgba(41, 41, 51, 0.8);
+}
+
+.log-time {
+    color: var(--light-text);
+    margin-right: 0.8rem;
+    white-space: nowrap;
+}
+
+.log-level {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 0.8rem;
+    min-width: 60px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.log-level.info {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.log-level.success {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.log-level.warning {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.log-level.error {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.log-message {
+    color: var(--text-color);
+    flex: 1;
+    overflow-wrap: break-word;
+    word-break: break-word;
+} 

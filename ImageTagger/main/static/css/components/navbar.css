@@ -1,0 +1,123 @@
+/* 导航栏样式 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    border-bottom: 1px solid var(--border-color);
+    background-image: var(--gradient-dark);
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 1px;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.logo i {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(255, 107, 151, 0.5);
+}
+
+/* 导航栏中的翻页栏 */
+.nav-pagination {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagination-stats {
+    background-color: rgba(26, 26, 36, 0.6);
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.pagination-stats strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* 文件统计信息样式 */
+.file-stats {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.7);
+    margin-right: 5px;
+}
+
+.stat-value {
+    color: #fff;
+    font-weight: 600;
+    min-width: 25px;
+    text-align: center;
+}
+
+/* 文件列表容器样式 */
+.files-list-container {
+    background-color: #1a1e24;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.files-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.file-item {
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+.file-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.file-item.selected {
+    background-color: rgba(231, 81, 158, 0.2);
+    color: #fff;
+}
+
+.no-files {
+    color: #888;
+    text-align: center;
+    font-style: italic;
+    padding: 15px;
+} 

@@ -1,0 +1,107 @@
+/* 响应式设计样式 */
+@media (max-width: 1400px) {
+    .text-display {
+        width: calc(100% - 360px - 300px - 2.4rem); /* 使用最小宽度计算 */
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-container {
+        flex-direction: column;
+        overflow-y: auto;
+        height: auto;
+    }
+    
+    .loading-area, .text-display, .right-section {
+        width: 100%;
+        margin-bottom: 1rem;
+        min-width: auto;
+    }
+    
+    .section-scrollbar {
+        display: none;
+    }
+    
+    .content-wrapper {
+        overflow-y: auto;
+    }
+    
+    .scroll-container, .scrollable-content {
+        position: static;
+        transform: none !important;
+    }
+    
+    .text-container {
+        padding-right: 0.8rem;
+    }
+    
+    .nav-pagination {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .text-edit, .log-display {
+        height: auto;
+        min-height: 300px;
+        margin-bottom: 1rem; /* 添加底部间距，确保两个区域分开 */
+    }
+    
+    .log-container {
+        min-height: 200px; /* 确保日志容器有足够高度 */
+        max-height: 500px; /* 限制最大高度，避免过长 */
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .nav-pagination {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .pagination-stats {
+        font-size: 0.8rem;
+    }
+    
+    .main-container {
+        padding: 0.8rem;
+        gap: 0.8rem;
+    }
+    
+    .button-area {
+        flex-wrap: wrap;
+    }
+    
+    .button-area button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .text-edit, .log-display {
+        min-height: 250px;
+    }
+    
+    .image-item, .text-item {
+        height: 250px;
+    }
+    
+    .log-entry {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px;
+    }
+    
+    .log-time, .log-level {
+        margin-bottom: 5px;
+    }
+} 

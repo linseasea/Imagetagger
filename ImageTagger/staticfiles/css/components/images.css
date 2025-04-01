@@ -1,0 +1,178 @@
+/* 图片项样式 */
+.image-item {
+    border: 2px solid transparent;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 15px; /* 保持图片间距一致 */
+    width: 300px;
+    height: 300px;
+    min-height: 300px; /* 确保最小高度 */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    /* 移除左右margin，确保与文本区域对齐 */
+    background-color: var(--dark-bg);
+    display: block; /* 改回块级展示 */
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.image-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--glow-effect);
+    border-color: var(--secondary-color);
+}
+
+.image-item.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(255, 107, 151, 0.5);
+}
+
+.image-item:hover img {
+    transform: scale(1.05);
+}
+
+.image-item .image-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* 图片加载区域样式 */
+.loading-area {
+    width: 380px; /* 使用380px宽度 */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* 确保加载区域占满高度 */
+    overflow: hidden; /* 防止内容溢出 */
+}
+
+/* 修改滚动容器结构，确保滚动正常工作 */
+.loading-area .content-wrapper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.loading-area .scroll-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-area .scrollable-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-right: 5px; /* 防止内容靠近边缘 */
+}
+
+.images-container {
+    padding: 0 0.8rem;
+    margin-top: var(--content-top-spacing);
+    display: flex;
+    flex-direction: column; /* 改为垂直排列 */
+    align-items: center; /* 水平居中 */
+    /* 移除gap，使用margin-bottom控制间距 */
+    width: 100%; /* 确保宽度撑满容器 */
+}
+
+.no-images {
+    margin-top: 3rem;
+    color: var(--light-text);
+    text-align: center;
+    opacity: 0.7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 图片序号 */
+.image-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    z-index: 2;
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 图片选择框 */
+.image-checkbox {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.image-checkbox input {
+    display: none;
+}
+
+.image-checkbox label {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(26, 26, 36, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    cursor: pointer;
+    backdrop-filter: blur(3px);
+}
+
+.image-checkbox input:checked + label {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    position: relative;
+}
+
+.image-checkbox input:checked + label:after {
+    content: "✓";
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+}
+
+/* 选中状态边框颜色 */
+.image-item.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(130, 80, 200, 0.5);
+}
+
+/* 悬停状态边框颜色 */
+.image-item.hover {
+    border-color: var(--secondary-color);
+    box-shadow: var(--glow-effect);
+    transform: translateY(-3px);
+} 

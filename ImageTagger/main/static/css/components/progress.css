@@ -1,0 +1,248 @@
+/* AI打标进度区域样式 */
+.ai-progress {
+    height: calc(10% - 0.6rem);
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--section-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--section-shadow);
+    position: relative;
+}
+
+/* 添加脉动边框效果 */
+.ai-progress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    animation: borderPulse 2s infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes borderPulse {
+    0% { border-color: rgba(255, 255, 255, 0.05); }
+    100% { border-color: rgba(255, 255, 255, 0.2); }
+}
+
+.ai-progress h2 {
+    background-color: var(--section-header-bg);
+    padding: 0.6rem 1rem;
+    margin: 0;
+    font-size: 1rem;
+    color: var(--section-header-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* 添加标题图标闪烁效果 */
+.ai-progress h2 i {
+    animation: iconPulse 1.5s infinite alternate;
+    color: #ff6b6b;
+}
+
+@keyframes iconPulse {
+    0% { opacity: 0.7; text-shadow: 0 0 3px rgba(255, 107, 107, 0.3); }
+    100% { opacity: 1; text-shadow: 0 0 8px rgba(255, 107, 107, 0.7); }
+}
+
+.progress-container {
+    padding: 0.8rem;
+    padding-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    z-index: 2;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar-container {
+    height: 20px;
+    background-color: rgba(40, 44, 52, 0.9);
+    border-radius: 20px;
+    overflow: visible;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 8px rgba(255, 255, 255, 0.15);
+    z-index: 1;
+    margin: 0.4rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: borderGlow 2s infinite alternate;
+}
+
+@keyframes borderGlow {
+    from { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 2px rgba(255, 255, 255, 0.1); }
+    to { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 8px rgba(255, 255, 255, 0.3); }
+}
+
+.progress-bar-container::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 22px;
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53, #ffa400, #7bed9f, #70a1ff);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 20px !important;
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53, #ffa400, #7bed9f, #70a1ff);
+    background-size: 400% 400%;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+    animation: gradient 8s ease infinite;
+    position: relative;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    min-width: 20px;
+}
+
+.progress-detail {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-align: center;
+    height: 1.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 2;
+    margin-top: 0.4rem;
+}
+
+/* 背景装饰元素 */
+.progress-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(106, 17, 203, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 70% 50%, rgba(37, 117, 252, 0.08) 0%, transparent 60%);
+    opacity: 0.9;
+    z-index: 0;
+}
+
+/* 动画定义 */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 添加小机器人图标 */
+.robot-icon {
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    transform: none;
+    font-size: 20px;
+    transition: left 0.5s ease;
+    z-index: 5;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+    animation: bounce 0.6s infinite alternate;
+    pointer-events: none;
+}
+
+/* 添加弹跳动画 */
+@keyframes bounce {
+    from { transform: translateX(-50%) translateY(0); }
+    to { transform: translateX(-50%) translateY(-3px); }
+}
+
+/* 添加发光刻度以增强视觉效果 */
+.progress-bar-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 5px,
+        rgba(255, 255, 255, 0.1) 5px,
+        rgba(255, 255, 255, 0.1) 10px
+    );
+    z-index: 0;
+}
+
+#progressStatus {
+    position: relative;
+    padding-left: 16px;
+}
+
+#progressStatus::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #70a1ff;
+    box-shadow: 0 0 5px rgba(112, 161, 255, 0.8);
+    animation: pulse 1.5s infinite;
+}
+
+/* 脉动动画 */
+@keyframes pulse {
+    0% { opacity: 0.5; transform: translateY(-50%) scale(0.8); }
+    50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
+    100% { opacity: 0.5; transform: translateY(-50%) scale(0.8); }
+}
+
+/* 扫描线动画 - 完全独立于进度条 */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* 覆盖整个容器宽度 */
+    height: 100%;
+    background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.8) 50%, 
+                transparent 100%);
+    opacity: 0.8; /* 提高不透明度 */
+    animation: scan 1.5s infinite linear;
+    pointer-events: none;
+    z-index: 3; /* 确保在最上层 */
+}
+
+@keyframes scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 删除旧的shine样式，因为已经被scan-line替代 */
+.shine {
+    display: none;
+} 

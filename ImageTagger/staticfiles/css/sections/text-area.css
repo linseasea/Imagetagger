@@ -1,0 +1,114 @@
+/* 文本展示区域样式 */
+.text-display {
+    width: calc(100% - 360px - 25% - 2.4rem); /* 总宽度减去图片区域宽度(360px)、右侧区域宽度(25%)和间距(2.4rem) */
+    flex-shrink: 0;
+    position: relative;
+    min-width: 400px; /* 确保最小宽度 */
+}
+
+.text-container {
+    padding: 0 0.8rem;
+    padding-right: 20px; /* 为滚动条预留空间 */
+    margin-top: var(--content-top-spacing);
+}
+
+/* 文本项 */
+.text-item {
+    height: 300px; /* 与图片高度一致 */
+    margin-bottom: var(--item-spacing); /* 与图片间距一致 */
+    padding: 0.8rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: rgba(42, 42, 56, 0.7);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+}
+
+.text-item.active {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(255, 107, 151, 0.3);
+    background-color: rgba(42, 42, 56, 0.9);
+}
+
+/* 文本项头部 */
+.item-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.item-number {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+
+.item-title {
+    font-weight: 600;
+    color: var(--text-color);
+    letter-spacing: 0.5px;
+}
+
+/* 文本内容 */
+.text-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.text-box {
+    margin-bottom: 0.6rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-box h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: var(--light-text);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.text-box h3:before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 14px;
+    background: var(--gradient-accent);
+    margin-right: 6px;
+    border-radius: 2px;
+}
+
+.text-box textarea {
+    flex: 1;
+    resize: none;
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: rgba(26, 26, 36, 0.6);
+    color: var(--text-color);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.text-box textarea:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(130, 80, 200, 0.2);
+} 

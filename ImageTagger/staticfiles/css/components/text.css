@@ -1,0 +1,229 @@
+/* 文本项样式 */
+.text-item {
+    border: 2px solid transparent; /* 与图片一致使用2px边框 */
+    border-radius: 5px;
+    padding: 0.8rem;
+    margin-bottom: 15px; /* 与图片间距保持一致 */
+    transition: all 0.3s ease;
+    background-color: rgba(42, 42, 56, 0.7);
+    height: 300px; /* 与图片高度一致 */
+    min-height: 300px; /* 确保最小高度 */
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    width: 100%;
+}
+
+.text-item:hover {
+    border-color: var(--secondary-color);
+    background-color: var(--hover-color);
+}
+
+.text-item.active {
+    border-color: var(--primary-color);
+    background-color: var(--active-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(255, 107, 151, 0.3);
+    background-color: rgba(42, 42, 56, 0.9);
+}
+
+.text-item.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(130, 80, 200, 0.5); /* 与图片选中效果一致 */
+    background-color: rgba(50, 50, 70, 0.8);
+    transform: translateY(-3px); /* 与图片悬停效果一致 */
+}
+
+.text-item.hover {
+    border-color: var(--secondary-color); /* 与图片悬停边框一致 */
+    box-shadow: var(--glow-effect); /* 与图片悬停阴影一致 */
+    background-color: rgba(45, 45, 60, 0.8);
+    transform: translateY(-3px); /* 与图片悬停效果一致 */
+}
+
+.text-item.selected .item-number,
+.text-item.hover .item-number {
+    background-color: var(--primary-light);
+    box-shadow: 0 0 5px var(--primary-light);
+}
+
+.text-item.selected .text-box textarea {
+    border-color: var(--primary-light);
+    background-color: rgba(35, 35, 45, 0.8);
+}
+
+.text-item.hover .text-box textarea {
+    border-color: var(--accent-color);
+    background-color: rgba(30, 30, 40, 0.8);
+}
+
+.text-item .text-content {
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.text-item .text-meta {
+    font-size: 12px;
+    color: var(--text-color-light);
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-item .text-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.text-item .text-actions button {
+    padding: 3px 8px;
+    font-size: 12px;
+}
+
+/* 文本展示区域样式 */
+.text-display {
+    width: calc(100% - 380px - 25% - 2.4rem); /* 总宽度减去图片区域宽度(380px)、右侧区域宽度(25%)和间距(2.4rem) */
+    flex-shrink: 0;
+    position: relative;
+    min-width: 400px; /* 确保最小宽度 */
+    overflow: hidden; /* 防止内容溢出 */
+}
+
+.text-display .content-wrapper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.text-display .scroll-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.text-display .scrollable-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-right: 20px; /* 为滚动条预留空间 */
+}
+
+.text-container {
+    padding: 0 0.8rem;
+    margin-top: var(--content-top-spacing);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* 文本项头部 */
+.item-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.item-number {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+
+.item-title {
+    font-weight: 600;
+    color: var(--text-color);
+    letter-spacing: 0.5px;
+}
+
+/* 文本框样式 */
+.text-box {
+    margin-bottom: 0.6rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-box h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: var(--light-text);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.text-box h3:before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 14px;
+    background: var(--gradient-accent);
+    margin-right: 6px;
+    border-radius: 2px;
+}
+
+.text-box textarea {
+    flex: 1;
+    resize: none;
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: rgba(26, 26, 36, 0.6);
+    color: var(--text-color);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.text-box textarea:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(130, 80, 200, 0.2);
+}
+
+/* 编辑中的文本框样式 */
+.text-box.editing {
+    position: relative;
+}
+
+.text-box.editing:after {
+    content: '正在编辑';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    z-index: 5;
+}
+
+.text-box.editing textarea {
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 8px rgba(255, 107, 151, 0.4);
+    background-color: rgba(30, 30, 40, 0.8);
+}
+
+/* 文本框禁用状态 */
+.text-box textarea[readonly] {
+    cursor: pointer;
+}
+
+.text-box textarea.empty {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+} 

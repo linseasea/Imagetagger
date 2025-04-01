@@ -1,0 +1,29 @@
+/* 颜色和样式变量 */
+:root {
+    /* 幻图师风格颜色方案 */
+    --primary-color: #8250c8;
+    --primary-light: #a37fe0;
+    --primary-dark: #5b2b99;
+    --secondary-color: #1f1f29;
+    --accent-color: #ff6b97;
+    --text-color: #e0e0e6;
+    --light-text: #a9a9b8;
+    --border-color: #444455;
+    --light-bg: #2a2a38;
+    --dark-bg: #1a1a24;
+    
+    /* 阴影和效果 */
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --glow-effect: 0 0 20px rgba(130, 80, 200, 0.4);
+    --border-radius: 8px;
+    
+    /* 间距和尺寸 */
+    --item-spacing: 20px; /* 统一项目间距 */
+    --content-top-spacing: 15px; /* 内容距按钮区域的距离 */
+    --header-button-height: 120px; /* 标题和按钮区域的总高度 */
+    
+    /* 渐变 */
+    --gradient-primary: linear-gradient(135deg, #8250c8 0%, #a37fe0 100%);
+    --gradient-accent: linear-gradient(135deg, #ff6b97 0%, #ffaa85 100%);
+    --gradient-dark: linear-gradient(135deg, #1a1a24 0%, #2a2a38 100%);
+} 

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageTagger</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <!-- 添加Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 添加Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-paint-brush"></i> ImageTagger</div>
+        
+        <!-- 翻页栏移动到这里 - 在导航栏中间 -->
+        <div class="nav-pagination">
+            <div class="pagination-stats">
+                <span id="imageStats">共 <strong>0</strong> 张图片，<strong>1</strong>/1 页</span>
+            </div>
+            <div class="pagination-bar">
+                <button class="page-btn prev-btn" id="prevPageBtn"><i class="fas fa-chevron-left"></i></button>
+                <div class="page-numbers">
+                    <!-- 页码按钮将由JavaScript动态生成 -->
+                </div>
+                <button class="page-btn next-btn" id="nextPageBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <div class="nav-buttons">
+            <button id="settingsBtn" class="settings-btn"><i class="fas fa-cog"></i> 设置</button>
+        </div>
+
+        <!-- 在导航栏或合适位置添加文件统计信息 -->
+        <div class="file-stats">
+            <div class="stat-item">
+                <span class="stat-label">图片:</span>
+                <span id="imageCount" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">中文文件:</span>
+                <span id="cnCount" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">英文文件:</span>
+                <span id="enCount" class="stat-value">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <!-- 加载区域 -->
+        <section class="loading-area">
+            <h2><i class="fas fa-images"></i> 图片加载区域</h2>
+            <div class="button-area">
+                <button id="selectCheckedBtn"><i class="fas fa-clone"></i> 选择选中</button>
+                <button id="selectPageBtn"><i class="fas fa-mouse-pointer"></i> 选择单页</button>
+                <button id="checkAllBtn"><i class="fas fa-check-square"></i> 勾选所有</button>
+            </div>
+            <div class="content-wrapper">
+                <div class="scroll-container">
+                    <div class="scrollable-content" id="imagesContent">
+                        <div class="images-container" id="imagesContainer">
+                            <div class="no-images" id="noImagesMessage">
+                                <i class="fas fa-image fa-2x"></i>
+                                <p>暂无图片加载</p>
+                            </div>
+                            <!-- JS将动态创建图片容器 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 文本展示区域 -->
+        <section class="text-display">
+            <h2><i class="fas fa-file-alt"></i> 文本展示区域</h2>
+            <div class="button-area">
+                <button id="createTextBtn"><i class="fas fa-file-medical"></i> 创建文本</button>
+                <button id="aiLabelBtn"><i class="fas fa-tags"></i> AI打标</button>
+                <button id="addPrefixBtn" class="ai-button"><i class="fas fa-magic"></i> 一键添加咒语</button>
+            </div>
+            <div class="content-wrapper">
+                <div class="scroll-container">
+                    <div class="scrollable-content" id="textContent">
+                        <div class="text-container" id="textContainer">
+                            <!-- JS将动态创建文本容器 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 文本区域内部滚动条 -->
+                    <div class="section-scrollbar" id="textScrollbar">
+                        <div class="scrollbar-thumb" id="textScrollbarThumb"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 右侧区域 -->
+        <div class="right-section">
+            <!-- 文本编辑区域 - 50%高度 -->
+            <section class="text-edit">
+                <h2><i class="fas fa-edit"></i> 文本编辑区域</h2>
+                <div class="button-area">
+                    <button class="save-button"><i class="fas fa-save"></i> 保存</button>
+                    <button class="clear-button"><i class="fas fa-trash"></i> 清空</button>
+                </div>
+                <div class="edit-container">
+                    <!-- 编辑区域内容 -->
+                    <textarea class="edit-area" placeholder="在这里编辑文本内容..."></textarea>
+                </div>
+            </section>
+            
+            <!-- AI打标进度区域 - 10%高度 -->
+            <section class="ai-progress">
+                <h2><i class="fas fa-robot"></i> AI打标进度</h2>
+                <div class="progress-container">
+                    <div class="progress-stats">
+                        <span id="progressStatus">处理中...</span>
+                        <span id="progressCount">1/2</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <!-- 添加独立的扫描线动画 -->
+                        <div class="scan-line"></div>
+                        <div class="progress-bar" id="aiProgressBar" style="width: 20px"></div>
+                        <div class="robot-icon">🤖</div>
+                    </div>
+                    <div class="progress-detail">
+                        <span id="currentProcessingFile">-</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 日志展示区域 - 40%高度 -->
+            <section class="log-display">
+                <h2><i class="fas fa-terminal"></i> 日志展示区域</h2>
+                <div class="button-area">
+                    <button class="log-button"><i class="fas fa-sync-alt"></i> 刷新</button>
+                    <button class="log-button"><i class="fas fa-download"></i> 导出</button>
+                    <button class="log-button"><i class="fas fa-eraser"></i> 清空</button>
+                </div>
+                <div class="log-container">
+                    <div class="log-entry">
+                        <span class="log-time">[14:32:45]</span>
+                        <span class="log-level info">信息</span>
+                        <span class="log-message">应用程序启动成功</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[14:33:12]</span>
+                        <span class="log-level success">成功</span>
+                        <span class="log-message">载入5张图片</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[14:33:57]</span>
+                        <span class="log-level warning">警告</span>
+                        <span class="log-message">图片加载速度较慢，请检查网络连接</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[14:35:03]</span>
+                        <span class="log-level error">错误</span>
+                        <span class="log-message">无法连接到AI服务，请稍后重试</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[14:36:18]</span>
+                        <span class="log-level info">信息</span>
+                        <span class="log-message">正在处理图片标签...</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 成功消息提示 -->
+    <div id="successMessage" class="success-message">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+        </svg>
+        <span>配置已保存成功</span>
+    </div>
+
+    <!-- 模态窗口 -->
+    <div id="settingsModal" class="modal" style="display: none;">
+        <!-- 加载指示器，移到外层 -->
+        <div id="loadingIndicator" class="loading-indicator">
+            <div class="spinner"></div>
+            <div class="loading-text">正在加载配置...</div>
+        </div>
+        
+        <div class="modal-content">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            <h2>设置</h2>
+            
+            <form id="settingsForm">
+                <div class="form-group">
+                    <label for="imagePath">图片路径：</label>
+                    <input type="text" id="imagePath" name="image_path" placeholder="请输入图片保存路径">
+                </div>
+                
+                <div class="form-group">
+                    <label for="cnFilePath">中文文件路径：</label>
+                    <input type="text" id="cnFilePath" name="cn_file_path" placeholder="请输入中文文件保存路径">
+                </div>
+                
+                <div class="form-group">
+                    <label for="enFilePath">英文文件路径：</label>
+                    <input type="text" id="enFilePath" name="en_file_path" placeholder="请输入英文文件保存路径">
+                </div>
+                
+                <hr class="form-divider">
+                <h3>AI模型设置</h3>
+                
+                <div class="form-group">
+                    <label for="baseUrl">API基础URL：</label>
+                    <input type="text" id="baseUrl" name="base_url" placeholder="请输入API基础URL">
+                </div>
+                
+                <div class="form-group">
+                    <label for="apiKey">API密钥：</label>
+                    <input type="password" id="apiKey" name="api_key" placeholder="请输入API密钥">
+                </div>
+                
+                <div class="form-group">
+                    <label for="modelName">模型名称：</label>
+                    <input type="text" id="modelName" name="model_name" placeholder="请输入模型名称">
+                </div>
+                
+                <div class="form-group">
+                    <label for="systemPrompt">系统提示词：</label>
+                    <textarea id="systemPrompt" name="system_prompt" placeholder="请输入模型system提示词" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="threadCount">线程数(1-20)：</label>
+                    <input type="number" id="threadCount" name="thread_count" placeholder="请输入线程数" min="1" max="20" value="4">
+                    <small class="form-help">线程数越多处理速度越快，但可能占用更多系统资源。建议4-8线程。</small>
+                </div>
+                
+                <div class="button-group">
+                    <button type="button" id="loadBtn">读取配置</button>
+                    <button type="button" id="saveBtn">保存配置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 可选：添加文件列表容器，如果需要在UI中显示文件列表 -->
+    <div class="file-lists-container" style="display: none;">
+        <div id="imagesList" class="files-list-container"></div>
+        <div id="cnFilesList" class="files-list-container"></div>
+        <div id="enFilesList" class="files-list-container"></div>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="/static/js/modules/logManager.js"></script>
+    <script src="/static/js/modules/imageManager.js"></script>
+    <script src="/static/js/modules/scrollManager.js"></script>
+    <script src="/static/js/modules/paginationManager.js"></script>
+    <script src="/static/js/modules/SettingsManager.js"></script>
+
+    <!-- 引入新增模块 -->
+    <script src="/static/js/modules/ImageLoader.js"></script>
+    <script src="/static/js/modules/TextLoader.js"></script>
+    <script src="/static/js/modules/UIHighlighter.js"></script>
+    <script src="/static/js/modules/TextEditor.js"></script>
+    <script src="/static/js/modules/AILabelManager.js"></script>
+
+    <!-- 主脚本必须最后引入，确保所有模块都已加载 -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
+
+

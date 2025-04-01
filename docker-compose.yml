@@ -1,0 +1,14 @@
+services:
+  web:
+    image: 133-imagetagger-web
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/images:/app/data/images
+      - ./data/cn:/app/data/cn
+      - ./data/en:/app/data/en
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=your_secret_key_here
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+    restart: always 

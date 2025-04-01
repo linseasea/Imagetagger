@@ -1,0 +1,93 @@
+/* 主要CSS文件 - 导入所有模块 */
+
+/* 导入变量和基础样式 */
+@import 'base/variables.css';
+@import 'base/reset.css';
+@import 'base/layout.css';
+@import 'base/responsive.css';
+@import 'base/base.css';
+
+/* 导入组件样式 */
+@import 'components/navbar.css';
+@import 'components/pagination.css';
+@import 'components/buttons.css';
+@import 'components/scrollbar.css';
+@import 'components/settings.css';
+
+/* 更多组件样式 */
+@import 'components/images.css';
+@import 'components/text.css';
+@import 'components/editor.css';
+@import 'sections/log-area.css';
+@import 'components/logs.css';
+@import 'components/forms.css';
+@import 'components/modal.css';
+@import 'components/progress.css';
+
+/* 图片选中样式 */
+.image-item.selected {
+    box-shadow: 0 0 0 3px #4a90e2, 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+
+/* 添加设置表单的样式 */
+.form-divider {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.modal-content h3 {
+    margin: 15px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* AI打标加载指示器样式 */
+.loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+.loading-text {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 特定区域样式 */
+
+

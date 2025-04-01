@@ -1,0 +1,78 @@
+/* 编辑器组件样式 */
+.editor {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px;
+    background-color: var(--background-color-light);
+}
+
+.editor-toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.editor-toolbar button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: var(--text-color);
+}
+
+.editor-toolbar button:hover {
+    background-color: var(--hover-color);
+}
+
+.editor-content {
+    min-height: 150px;
+    padding: 10px;
+    border: 1px solid var(--border-color-light);
+    border-radius: 3px;
+    background-color: white;
+}
+
+.editor-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color-light);
+}
+
+/* 文本编辑区域样式 */
+.text-edit {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(50% - 0.6rem); /* 限制最大高度，确保不占用日志区域空间 */
+    flex: none; /* 不使用flex自动伸缩 */
+}
+
+.edit-container {
+    padding: 0.8rem;
+    height: calc(100% - 80px); /* 减去标题和按钮区域的高度 */
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-area {
+    flex: 1;
+    resize: none;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: rgba(26, 26, 36, 0.8);
+    color: var(--text-color);
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.edit-area:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(130, 80, 200, 0.2);
+} 
